@@ -21,3 +21,10 @@ http://www.ekikara.jp/newdata/ekijikoku/1301361/down1_14101011.htm
 ↓
 http://localhost:3000/station/1301361/down1_14101011
 ```
+
+### Line
+```
+http://www.ekikara.jp/newdata/line/1212011/down1_1.htm
+↓
+http://localhost:3000/line/1212011/down1_1
+```

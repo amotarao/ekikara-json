@@ -16,6 +16,15 @@ def create_app():
         response.headers['Content-Type'] = 'application/json'
         return response
 
+    @app.route('/line/<string:lineId>/<string:pageId>', methods=['GET'])
+    def get_line_timetable(lineId, pageId):
+        L = Line("http://www.ekikara.jp/newdata/line/" + lineId + "/" + pageId + ".htm")
+        timetable = L.get_all_timetable()
+        # return make_response(jsonify({"timetable": timetable}), 200)
+        response = make_response(json.dumps({"timetable": timetable}, ensure_ascii=False, sort_keys=True, separators=(',', ': ')), 200)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+
     @app.errorhandler(404)
     def not_found(error):
         return make_response(jsonify({'error': 'Not found'}), 404)
